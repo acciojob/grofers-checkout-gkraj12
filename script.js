@@ -1,4 +1,4 @@
-  let prices = document.querySelectorAll(".prices");
+ let prices = document.querySelectorAll(".prices");
 let total = 0;
 
 prices.forEach((price) => {
@@ -6,13 +6,11 @@ prices.forEach((price) => {
 });
 
 let table = document.getElementById("groceryTable");
-let tbody = table.querySelector("tbody") || table;
 
 let newRow = document.createElement("tr");
 let newCell = document.createElement("td");
 
 newCell.textContent = total;
-newCell.colSpan = 2;
 
 newRow.appendChild(newCell);
-tbody.appendChild(newRow);
+table.appendChild(newRow);
