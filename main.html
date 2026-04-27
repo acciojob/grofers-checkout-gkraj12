@@ -24,31 +24,24 @@
             <td class="prices">40</td>
         </tr>
     </table>
-    <script>
-		 let prices = document.querySelectorAll(".prices");
-let total = 0;
+  <script>
+  const prices = document.querySelectorAll(".prices");
+  let total = 0;
 
-prices.forEach((price) => {
+  prices.forEach((price) => {
     total += Number(price.textContent);
-});
+  });
 
-let table = document.getElementById("groceryTable");
+  const table = document.getElementById("groceryTable");
+  const newRow = document.createElement("tr");
+  const totalCell = document.createElement("td");
 
-let newRow = document.createElement("tr");
+  totalCell.textContent = total;
+  totalCell.colSpan = 2; // optional, makes it span both columns
 
-// first cell (label)
-let cell1 = document.createElement("td");
-cell1.textContent = "Total";
-
-// second cell (value)
-let cell2 = document.createElement("td");
-cell2.textContent = total;
-
-newRow.appendChild(cell1);
-newRow.appendChild(cell2);
-
-table.appendChild(newRow);
-	</script>
+  newRow.appendChild(totalCell);
+  table.appendChild(newRow);
+</script>
 
 
 
