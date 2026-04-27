@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -23,41 +23,47 @@
       <td class="item">Milk</td>
       <td class="prices">40</td>
     </tr>
+    <tr>
+      <td class="item">Bread</td>
+      <td class="prices">0</td>
+    </tr>
+    <tr>
+      <td class="item">Eggs</td>
+      <td class="prices">0</td>
+    </tr>
   </table>
 
- <button>Calculate Total</button>
-<h3 id="ans"></h3>
+  <button>Calculate Total</button>
+  <h3 id="ans"></h3>
 
-<script>
-  const priceCells = document.querySelectorAll(".prices");
-  const button = document.querySelector("button");
-  const ans = document.getElementById("ans");
+  <script>
+    const priceCells = document.querySelectorAll(".prices");
+    const button = document.querySelector("button");
+    const ans = document.getElementById("ans");
 
-  const originalPrices = Array.from(priceCells).map((cell) =>
-    cell.textContent.trim()
-  );
+    const originalValues = Array.from(priceCells).map((cell) =>
+      cell.textContent.trim()
+    );
 
-  button.addEventListener("click", function () {
-    let total = 0;
+    button.addEventListener("click", function () {
+      let total = 0;
 
-    priceCells.forEach((cell, index) => {
-      const currentText = cell.textContent.trim();
-      const originalText = originalPrices[index];
+      priceCells.forEach((cell, index) => {
+        const current = cell.textContent.trim();
+        const original = originalValues[index];
 
-      let value;
+        let value;
+        if (current === original) {
+          value = Number(original);
+        } else {
+          value = Number(current.slice(original.length));
+        }
 
-      if (currentText.startsWith(originalText) && currentText !== originalText) {
-        value = Number(currentText.slice(originalText.length));
-      } else {
-        value = Number(currentText);
-      }
+        total += value;
+      });
 
-      total += value;
+      ans.textContent = total;
     });
-
-    ans.textContent = total;
-  });
-</script>
-
+  </script>
 </body>
 </html>
