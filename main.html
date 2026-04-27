@@ -24,7 +24,7 @@
             <td class="prices">40</td>
         </tr>
     </table>
-  <script>
+ <script>
   const prices = document.querySelectorAll(".prices");
   let total = 0;
 
@@ -32,17 +32,16 @@
     total += Number(price.textContent);
   });
 
-  const table = document.getElementById("groceryTable");
+  const tbody = document.querySelector("#groceryTable tbody");
   const newRow = document.createElement("tr");
-  const totalCell = document.createElement("td");
+  const newCell = document.createElement("td");
 
-  totalCell.textContent = total;
-  totalCell.colSpan = 2; // optional, makes it span both columns
+  newCell.textContent = total;
+  newCell.colSpan = 2;
 
-  newRow.appendChild(totalCell);
-  table.appendChild(newRow);
+  newRow.appendChild(newCell);
+  tbody.appendChild(newRow);
 </script>
-
 
 
 </body>
