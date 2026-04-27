@@ -1,48 +1,47 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grocery List</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grocery List</title>
 </head>
 <body>
-    <table id="groceryTable">
-        <tr>
-            <th>Item</th>
-            <th>Price</th>
-        </tr>
-        <tr>
-            <td class="item">Apple</td>
-            <td class="prices">50</td>
-        </tr>
-        <tr>
-            <td class="item">Banana</td>
-            <td class="prices">30</td>
-        </tr>
-        <tr>
-            <td class="item">Milk</td>
-            <td class="prices">40</td>
-        </tr>
-    </table>
- <script>
-  const prices = document.querySelectorAll(".prices");
-  let total = 0;
+  <table id="groceryTable">
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <td class="item">Apple</td>
+      <td class="prices">50</td>
+    </tr>
+    <tr>
+      <td class="item">Banana</td>
+      <td class="prices">30</td>
+    </tr>
+    <tr>
+      <td class="item">Milk</td>
+      <td class="prices">40</td>
+    </tr>
+  </table>
 
-  prices.forEach((price) => {
-    total += Number(price.textContent);
-  });
+  <button>Calculate Total</button>
+  <h3 id="ans"></h3>
 
-  const tbody = document.querySelector("#groceryTable tbody");
-  const newRow = document.createElement("tr");
-  const newCell = document.createElement("td");
+  <script>
+    const button = document.querySelector("button");
+    const ans = document.getElementById("ans");
 
-  newCell.textContent = total;
-  newCell.colSpan = 2;
+    button.addEventListener("click", function () {
+      const prices = document.querySelectorAll(".prices");
+      let total = 0;
 
-  newRow.appendChild(newCell);
-  tbody.appendChild(newRow);
-</script>
+      prices.forEach(function (price) {
+        total += Number(price.textContent);
+      });
 
-
+      ans.textContent = total;
+    });
+  </script>
 </body>
 </html>
