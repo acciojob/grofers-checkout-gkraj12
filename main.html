@@ -25,7 +25,7 @@
         </tr>
     </table>
     <script>
-		let prices = document.querySelectorAll(".prices");
+		 let prices = document.querySelectorAll(".prices");
 let total = 0;
 
 prices.forEach((price) => {
@@ -35,13 +35,19 @@ prices.forEach((price) => {
 let table = document.getElementById("groceryTable");
 
 let newRow = document.createElement("tr");
-let newCell = document.createElement("td");
 
-newCell.textContent = total;
+// first cell (label)
+let cell1 = document.createElement("td");
+cell1.textContent = "Total";
 
-newRow.appendChild(newCell);
+// second cell (value)
+let cell2 = document.createElement("td");
+cell2.textContent = total;
+
+newRow.appendChild(cell1);
+newRow.appendChild(cell2);
+
 table.appendChild(newRow);
-
 	</script>
 
 
