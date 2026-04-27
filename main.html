@@ -25,23 +25,39 @@
     </tr>
   </table>
 
-  <button>Calculate Total</button>
-  <h3 id="ans"></h3>
+ <button>Calculate Total</button>
+<h3 id="ans"></h3>
 
-  <script>
-    const button = document.querySelector("button");
-    const ans = document.getElementById("ans");
+<script>
+  const priceCells = document.querySelectorAll(".prices");
+  const button = document.querySelector("button");
+  const ans = document.getElementById("ans");
 
-    button.addEventListener("click", function () {
-      const prices = document.querySelectorAll(".prices");
-      let total = 0;
+  const originalPrices = Array.from(priceCells).map((cell) =>
+    cell.textContent.trim()
+  );
 
-      prices.forEach(function (price) {
-        total += Number(price.textContent);
-      });
+  button.addEventListener("click", function () {
+    let total = 0;
 
-      ans.textContent = total;
+    priceCells.forEach((cell, index) => {
+      const currentText = cell.textContent.trim();
+      const originalText = originalPrices[index];
+
+      let value;
+
+      if (currentText.startsWith(originalText) && currentText !== originalText) {
+        value = Number(currentText.slice(originalText.length));
+      } else {
+        value = Number(currentText);
+      }
+
+      total += value;
     });
-  </script>
+
+    ans.textContent = total;
+  });
+</script>
+
 </body>
 </html>
